@@ -11,40 +11,77 @@ const prizes = [
     currency: "€",
     id: nanoid(5),
     color: faker.internet.color(),
-    // image: {
-    //   src: "/images/sensape-logo.png",
-    //   scale: 0.25
-    // }
-    image: "/images/sensape-logo.png"
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 10,
+    type: "Rabatt",
+    currency: "%",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 100,
+    type: "Gutschein",
+    currency: "€",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 500,
+    type: "Gutschein",
+    currency: "€",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 100,
+    type: "Rabatt",
+    currency: "%",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 20,
+    type: "Gutschein",
+    currency: "€",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
+  },
+  {
+    value: 10,
+    type: "Rabatt",
+    currency: "€",
+    id: nanoid(5),
+    color: faker.internet.color(),
+    image: {
+      src: "/images/sensape-logo.png",
+      scale: 0.25
+    }
   }
-  // {
-  //   value: 10,
-  //   type: "Rabatt",
-  //   currency: "%",
-  //   id: nanoid(5),
-  //   color: faker.internet.color()
-  // },
-  // {
-  //   value: 100,
-  //   type: "Gutschein",
-  //   currency: "€",
-  //   id: nanoid(5),
-  //   color: faker.internet.color()
-  // },
-  // {
-  //   value: 500,
-  //   type: "Gutschein",
-  //   currency: "€",
-  //   id: nanoid(5),
-  //   color: faker.internet.color()
-  // },
-  // {
-  //   value: 100,
-  //   type: "Rabatt",
-  //   currency: "%",
-  //   id: nanoid(5),
-  //   color: faker.internet.color()
-  // }
 ];
 
 const Segment = ({ prize, index, total }) => {
@@ -58,47 +95,46 @@ const Segment = ({ prize, index, total }) => {
 
   console.log(prize.image.src);
 
-  const [image] = useImage("/images/sensape-logo.png");
+  const [image] = useImage(prize.image.src);
 
   console.log(image);
 
-  // if (!image) {
-  //   console.log(image);
-  //   return <></>;
-  // }
+  if (!image) {
+    console.log(image);
+    return <></>;
+  }
 
-  // const scale = prize.image.scale;
-  // const imgHeight = image.height * scale;
-  // const imgWidth = image.width * scale;
+  const scale = prize.image.scale;
+  const imgHeight = image.height * scale;
+  const imgWidth = image.width * scale;
   const fontSize = 15;
 
   return (
     <Group rotation={rotation}>
-      <Text text="hello" fill="black" />
-      {/* <Wedge
+      <Wedge
         radius={200}
         fill={prize.color}
         angle={angle}
         rotation={-angle / 2}
         stroke="black"
         strokeWidth={2}
-      /> */}
-      {/* <Group rotation={180} x={190} y={-25}> */}
-      {/* <Text
+      />
+      <Group rotation={180} x={190} y={-25}>
+        <Text
           fill="black"
           text={`${prize.value}${prize.currency} ${prize.type}`}
           fontSize={fontSize}
           y={-imgWidth + fontSize}
           x={imgHeight + 5}
           listening={false}
-        /> */}
-      {/* <Image
+        />
+        <Image
           width={imgWidth}
           height={imgHeight}
           rotation={-90}
           image={image}
-        /> */}
-      {/* </Group> */}
+        />
+      </Group>
     </Group>
   );
 };
